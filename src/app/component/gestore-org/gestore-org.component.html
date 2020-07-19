@@ -1,0 +1,20 @@
+<mat-toolbar color="primary"  >
+  <button mat-fab (click)="home()" class="home" color="basic" >
+    <mat-icon>home</mat-icon>
+  </button>
+
+  <p class="toolbar">{{org.nome}}</p>
+
+</mat-toolbar>
+<mat-sidenav-container class="container" autosize>
+  <mat-sidenav #drawer class="sidenav" mode="side">
+    <h1>Menu</h1>
+    <app-menu [unitaSel]="unita"
+      (aggU)="aggiungiUnita($event)" (aggD)="aggiungiDip($event)" (aggR)="aggiungiRuolo($event)" >
+    </app-menu>
+  </mat-sidenav>
+
+  <div>
+    <app-albero (menu)="drawer.open()" (selected)="selected($event)" [unitaRadice]="unitaRadice" ></app-albero>
+  </div>
+</mat-sidenav-container>

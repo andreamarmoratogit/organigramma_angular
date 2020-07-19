@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { HomeService } from 'src/app/service/home.service';
+import { Organigramma } from 'src/app/class/organigramma';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,10 +12,14 @@ import { HomeService } from 'src/app/service/home.service';
 export class HomeComponent implements OnInit {
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
-  testo = '';
-  testo2 = '';
+  org: Organigramma;
+  nomeO: string;
+  nomeR: string;
 
-  constructor(private formBuilder: FormBuilder, private homeService: HomeService) {
+  constructor(private formBuilder: FormBuilder, private homeService: HomeService, private router: Router) {
+    this.nomeO = '';
+    this.nomeR = '';
+    this.org = new Organigramma();
     this.firstFormGroup = this.formBuilder.group({
       firstCtrl: ['', Validators.required]
     });
@@ -21,23 +27,25 @@ export class HomeComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
 
-    this.firstFormGroup.valueChanges.subscribe(value => {this.testo = value.firstCtrl; });
-    this.secondFormGroup.valueChanges.subscribe(value => {this.testo2 = value.secondCtrl; });
+    this.firstFormGroup.valueChanges.subscribe(value => {this.nomeO = value.firstCtrl; });
+    this.secondFormGroup.valueChanges.subscribe(value => {this.nomeR = value.secondCtrl; });
   }
 
   ngOnInit() {
 
   }
-  cerca(){
-    if ( this.testo.length <= 0 || this.testo2.length <= 0){
+  verifica(){
+    if ( this.nomeO.length <= 0 || this.nomeR.length <= 0){
       return false;
     }
     return true;
   }
-  click() {
-    console.log(`${this.testo}  ${this.testo2}`);
-
-    this.homeService.creaOrganigramma(this.testo, this.testo2);
+  crea() {
+    console.log(`${this.nomeO}  ${this.nomeR}`);
+    this.homeService.creaOrganigramma(this.nomeO, this.nomeR).subscribe((res: Organigramma) =>
+    {this.org.create(res),
+      this.homeService.setOrg(this.org),
+      this.router.navigate(['organigramma']); }
+    );
   }
-
 }

@@ -18,8 +18,8 @@
 
 
       <button  mat-button matStepperPrevious>Back</button>
-      <div *ngIf="cerca()">
-        <button (click)="click()" mat-button matStepperNext>Cerca</button>
+      <div *ngIf="verifica()">
+        <button (click)="cerca()" mat-button matStepperNext>Cerca</button>
       </div>
     </form>
   </mat-step>

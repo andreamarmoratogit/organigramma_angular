@@ -1,0 +1,60 @@
+<button mat-raised-button (click)="aggUnita = !aggUnita" color="primary">Aggiungi unita</button>
+<div *ngIf="aggUnita">
+  <mat-form-field appeareance="fill">
+    <mat-label>Tipo</mat-label>
+    <mat-select [(value)]="tipo">
+      <mat-option value="unita">Unita</mat-option>
+      <mat-option value="sottounita">Sottounita</mat-option>
+      <mat-option value="organi">Organi Di Gestione</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <mat-form-field appeareance="fill">
+    <mat-label>Nome</mat-label>
+    <input #aggUnIn (keyup)="nome=aggUnIn.value" matInput>
+  </mat-form-field>
+  <br>
+  <button mat-stroked-button (click)="sendAggU()" color="primary">Aggiungi</button>
+</div>
+<br>
+<button mat-raised-button (click)="rimuovi = !rimuovi" color="primary">Rimuovi unita</button>
+<div *ngIf="rimuovi">
+  <span>Confermi?</span>
+  <button mat-stroked-button color="primary">si</button>
+  <button mat-stroked-button color="primary">no</button>
+
+</div>
+<br>
+<button mat-raised-button (click)="aggDip = !aggDip" color="primary">Aggiungi Dipendente</button>
+<div *ngIf="aggDip">
+  <mat-form-field appeareance="fill">
+    <mat-label>Nome</mat-label>
+    <input #aggDipN (keyup)="nome=aggDipN.value" matInput>
+  </mat-form-field>
+  <br>
+  <mat-form-field appeareance="fill">
+    <mat-label>Cognome</mat-label>
+    <input #aggDipC (keyup)="cognome=aggDipC.value" matInput>
+  </mat-form-field>
+  <br>
+  <mat-form-field appeareance="fill">
+    <mat-label>ruolo</mat-label>
+    <mat-select [(value)]="ruolo">
+
+      <mat-option *ngFor="let element of unitaSel.ruoli" value={{element}}>{{element}}</mat-option>
+
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <button mat-stroked-button color="primary" (click)="sendAggD()" >Aggiungi</button>
+</div>
+<br>
+<button mat-raised-button (click)="aggRuolo = !aggRuolo" color="primary">Aggiungi Ruolo</button>
+<div *ngIf="aggRuolo">
+  <mat-form-field appeareance="fill">
+    <mat-label>Nome</mat-label>
+    <input #aggRuIn (keyup)="nome=aggRuIn.value" matInput>
+  </mat-form-field>
+  <br>
+  <button mat-stroked-button (click)="sendAggR()" color="primary">Aggiungi</button>
+</div>

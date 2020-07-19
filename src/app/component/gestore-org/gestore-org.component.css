@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 70px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidenav {
+  top: -20px;
+  padding: 10px;
+}
+.toolbar {
+  padding-left: 45%;
+  font-size: 130%;
+  font: italic;
+}
+.home {
+  font-size: 100%;
+}

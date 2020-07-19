@@ -1,0 +1,27 @@
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" >
+  <mat-radio-group>
+    <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+      <li class="mat-tree-node">
+        <button mat-icon-button ></button>
+        {{node.figli}}
+      </li>
+    </mat-tree-node>
+
+    <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+      <div class="mat-tree-node">
+        <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle' + node.nome">
+          <mat-icon class="mat-icon-rtl-mirror">
+            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+          </mat-icon>
+        </button>
+        <mat-radio-button (change)="nodoSelezionato(node)" [value]="node">
+          <app-tabella-dip [titolo]="node.nome" [listDip]="node.listDip" [listRuoli]="node.ruoli"></app-tabella-dip>
+        </mat-radio-button>
+      </div>
+      <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+        <ng-container matTreeNodeOutlet></ng-container>
+      </ul>
+
+    </mat-nested-tree-node>
+  </mat-radio-group>
+</mat-tree>
