@@ -43,6 +43,24 @@ export class GestoreOrgComponent implements OnInit {
       this.unitaRadice = this.org.unita; });
   }
 
+  rimuoviUnita(){
+    this.orgService.rimUnita(this.org.id, this.unita.id).subscribe((ret: Organigramma) =>
+    { this.org.create(ret),
+      this.unitaRadice = this.org.unita; });
+  }
+
+  rimuoviDip(id: string){
+    this.orgService.rimDip(this.org.id, this.unita.id , id).subscribe((ret: Organigramma) =>
+    { this.org.create(ret),
+      this.unitaRadice = this.org.unita; });
+  }
+
+  rimuoviRuolo(nome: string){
+    this.orgService.rimRuolo(this.org.id, this.unita.id, nome).subscribe((ret: Organigramma) =>
+    { this.org.create(ret),
+      this.unitaRadice = this.org.unita; });
+  }
+
   reload(){
     this.router.routeReuseStrategy.shouldReuseRoute = function f() {return false; };
     this.router.navigate(['organigramma']);

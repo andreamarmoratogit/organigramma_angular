@@ -30,6 +30,7 @@ export class AlberoComponent implements OnInit {
     this.dataSource.data = [this.unitaRadice];
     console.log(this.unitaRadice.toString());*/
   }
+  // tslint:disable-next-line: use-lifecycle-interface
   ngOnChanges(changes: SimpleChanges): void{
     this.dataSource.data = [this.unitaRadice];
   }

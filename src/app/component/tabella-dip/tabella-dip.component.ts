@@ -14,7 +14,7 @@ export class TabellaDipComponent implements OnInit {
   listRuoli: string[] = [];
   @Input()
   titolo = 'null';
-  colonne: string[] = ['nome', 'congome', 'ruolo'];
+  colonne: string[] = ['id', 'nome', 'congome', 'ruolo'];
   constructor() { }
 
   ngOnInit(): void {

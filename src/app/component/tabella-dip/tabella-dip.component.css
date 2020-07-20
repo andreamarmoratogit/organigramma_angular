@@ -1,3 +1,4 @@
-table {
-  width: 100%;
+::ng-deep th.mat-header-cell{
+  min-width: 170px;
 }
+

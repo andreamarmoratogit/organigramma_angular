@@ -25,6 +25,7 @@ import { OrganigrammaService } from './service/organigramma.service';
 import { TabellaDipComponent } from './component/tabella-dip/tabella-dip.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { MatTableModule } from '@angular/material/table';
     MatToolbarModule,
     MatSelectModule,
     MatExpansionModule,
-    MatTableModule
+    MatTableModule,
+    MatChipsModule
   ],
   providers: [HomeService, OrganigrammaService],
   bootstrap: [AppComponent]

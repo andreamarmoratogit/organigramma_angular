@@ -1,11 +1,13 @@
-<h1>Organigramma Aziendale</h1>
-<hr size="10">
-<h2>Nuovo Organigramma</h2>
+<mat-toolbar color="primary"  >
+  <p style="font-size: 30px;">Organigramma Aziendale</p>
+</mat-toolbar>
+<hr size="5px">
+<h2 class="subtitle">Nuovo Organigramma</h2>
 
 <mat-vertical-stepper labelPosition="bottom">
   <mat-step [stepControl]="firstFormGroup" errorMessage="name required">
     <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Nome organigramma</ng-template>
+      <ng-template class="testo" matStepLabel >Nome organigramma</ng-template>
       <mat-form-field>
         <mat-label>Nome organigramma</mat-label>
         <input matInput placeholder="inserire nome" formControlName="firstCtrl" required>
@@ -39,5 +41,5 @@
 </mat-vertical-stepper>
 
 
-<h2>Cerca Organigramma</h2>
+<h2 class="subtitle">Cerca Organigramma</h2>
 <app-home2></app-home2>

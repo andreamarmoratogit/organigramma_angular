@@ -14,8 +14,8 @@
             {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
           </mat-icon>
         </button>
-        <mat-radio-button (change)="nodoSelezionato(node)" [value]="node">
-          <app-tabella-dip [titolo]="node.nome" [listDip]="node.listDip" [listRuoli]="node.ruoli"></app-tabella-dip>
+        <mat-radio-button (change)="nodoSelezionato(node)" [value]="node" style="padding-bottom: 5px">
+          <app-tabella-dip [titolo]="node.nome" [listDip]="node.listDip" [listRuoli]="node.ruoli" ></app-tabella-dip>
         </mat-radio-button>
       </div>
       <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">

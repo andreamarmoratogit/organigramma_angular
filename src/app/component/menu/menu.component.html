@@ -1,4 +1,4 @@
-<button mat-raised-button (click)="aggUnita = !aggUnita" color="primary">Aggiungi unita</button>
+<button mat-raised-button (click)="aggUnita = !aggUnita" color="primary" >Aggiungi Unita</button>
 <div *ngIf="aggUnita">
   <mat-form-field appeareance="fill">
     <mat-label>Tipo</mat-label>
@@ -16,15 +16,14 @@
   <br>
   <button mat-stroked-button (click)="sendAggU()" color="primary">Aggiungi</button>
 </div>
-<br>
-<button mat-raised-button (click)="rimuovi = !rimuovi" color="primary">Rimuovi unita</button>
-<div *ngIf="rimuovi">
-  <span>Confermi?</span>
-  <button mat-stroked-button color="primary">si</button>
-  <button mat-stroked-button color="primary">no</button>
 
+<br><br>
+<button mat-raised-button (click)="rimUnita = !rimUnita" color="primary">Rimuovi Unita</button>
+<div *ngIf="rimUnita">
+  <button mat-stroked-button color="primary" (click)="sendRimU()">Conferma</button>
 </div>
-<br>
+
+<br><br>
 <button mat-raised-button (click)="aggDip = !aggDip" color="primary">Aggiungi Dipendente</button>
 <div *ngIf="aggDip">
   <mat-form-field appeareance="fill">
@@ -48,7 +47,19 @@
   <br>
   <button mat-stroked-button color="primary" (click)="sendAggD()" >Aggiungi</button>
 </div>
-<br>
+<br><br>
+
+<button mat-raised-button (click)="rimDip = !rimDip" color="primary">Rimuovi Dipendente</button>
+<div *ngIf="rimDip">
+  <mat-form-field appeareance="fill">
+    <mat-label>Id</mat-label>
+    <input #rimDipIn (keyup)="nome=rimDipIn.value" matInput>
+  </mat-form-field>
+  <br>
+  <button mat-stroked-button color="primary" (click)="sendRimD()">Conferma</button>
+</div>
+<br><br>
+
 <button mat-raised-button (click)="aggRuolo = !aggRuolo" color="primary">Aggiungi Ruolo</button>
 <div *ngIf="aggRuolo">
   <mat-form-field appeareance="fill">
@@ -57,4 +68,15 @@
   </mat-form-field>
   <br>
   <button mat-stroked-button (click)="sendAggR()" color="primary">Aggiungi</button>
+</div>
+<br><br>
+
+<button mat-raised-button (click)="rimRuolo = !rimRuolo" color="primary">Rimuovi Ruolo</button>
+<div *ngIf="rimRuolo">
+  <mat-form-field appeareance="fill">
+    <mat-label>Nome</mat-label>
+    <input #rimRuIn (keyup)="nome=rimRuIn.value" matInput>
+  </mat-form-field>
+  <br>
+  <button mat-stroked-button color="primary" (click)="sendRimR()">Conferma</button>
 </div>

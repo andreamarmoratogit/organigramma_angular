@@ -10,7 +10,8 @@
   <mat-sidenav #drawer class="sidenav" mode="side">
     <h1>Menu</h1>
     <app-menu [unitaSel]="unita"
-      (aggU)="aggiungiUnita($event)" (aggD)="aggiungiDip($event)" (aggR)="aggiungiRuolo($event)" >
+      (aggU)="aggiungiUnita($event)" (aggD)="aggiungiDip($event)" (aggR)="aggiungiRuolo($event)" (rimU)="rimuoviUnita()"
+      (rimD)="rimuoviDip()" (rimR)="rimuoviRuolo()">
     </app-menu>
   </mat-sidenav>
 
