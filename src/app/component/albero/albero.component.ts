@@ -18,7 +18,8 @@ export class AlberoComponent implements OnInit {
   primaSelezione = true;
   @Output() menu = new EventEmitter();
   @Output() selected = new EventEmitter<UnitaPadre>();
-  @Input() private unitaRadice: UnitaPadre;
+  @Input() unitaRadice: UnitaPadre;
+  @Input() cont = 0;
  /* @Input()
   set unitaR(unitaR: UnitaPadre){
     this.unitaRadice = unitaR;

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Dipendente } from 'src/app/class/dipendente';
 
 
@@ -19,5 +19,8 @@ export class TabellaDipComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  // tslint:disable-next-line: use-lifecycle-interface
+  ngOnChanges(changes: SimpleChanges){}
 
 }

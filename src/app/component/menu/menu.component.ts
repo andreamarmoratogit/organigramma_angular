@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@
 import { UnitaPadre } from 'src/app/class/unita-padre';
 import { OrganigrammaService } from 'src/app/service/organigramma.service';
 import { Router } from '@angular/router';
-import { Organigramma } from 'src/app/class/organigramma';
 import { HomeService } from 'src/app/service/home.service';
 
 
