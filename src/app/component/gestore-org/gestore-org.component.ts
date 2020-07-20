@@ -13,6 +13,7 @@ export class GestoreOrgComponent implements OnInit {
   org: Organigramma;
   unitaRadice: UnitaPadre;
   unita: UnitaPadre;
+  cont = 0;
   constructor(private homeService: HomeService, private orgService: OrganigrammaService, private router: Router) {
     this.homeService.orgObs.subscribe(o => this.org = o);
     this.unitaRadice = this.org.unita;
@@ -27,47 +28,48 @@ export class GestoreOrgComponent implements OnInit {
   aggiungiUnita(s: string[]){
     console.log(this.unita.id + ' ' + s[0] + ' ' + s[1]);
     this.orgService.aggUnita(this.org.id, this.unita.id , s[0], s[1]).subscribe((ret: Organigramma) =>
-    { this.org.create(ret),
-      this.unitaRadice = this.org.unita; });
+    { this.ricarica(ret); });
   }
 
   aggiungiRuolo(s: string){
     this.orgService.aggRuolo(this.org.id, this.unita.id, s).subscribe((ret: Organigramma) =>
-    { this.org.create(ret),
-      this.unitaRadice = this.org.unita; });
+    { this.ricarica(ret); });
   }
 
   aggiungiDip(s: string[]){
     this.orgService.aggDip(this.org.id, this.unita.id, s[0], s[1], s[2]).subscribe((ret: Organigramma) =>
-    { this.org.create(ret),
-      this.unitaRadice = this.org.unita; });
+    { this.ricarica(ret); });
   }
 
   rimuoviUnita(){
     this.orgService.rimUnita(this.org.id, this.unita.id).subscribe((ret: Organigramma) =>
-    { this.org.create(ret),
-      this.unitaRadice = this.org.unita; });
+    { this.ricarica(ret); });
   }
 
   rimuoviDip(id: string){
     this.orgService.rimDip(this.org.id, this.unita.id , id).subscribe((ret: Organigramma) =>
-    { this.org.create(ret),
-      this.unitaRadice = this.org.unita; });
+    { this.ricarica(ret); });
   }
 
   rimuoviRuolo(nome: string){
     this.orgService.rimRuolo(this.org.id, this.unita.id, nome).subscribe((ret: Organigramma) =>
-    { this.org.create(ret),
-      this.unitaRadice = this.org.unita; });
+    { this.ricarica(ret); });
   }
 
-  reload(){
+ /* reload(){
     this.router.routeReuseStrategy.shouldReuseRoute = function f() {return false; };
     this.router.navigate(['organigramma']);
-  }
+  }*/
 
   selected(unitaSel: UnitaPadre){
     this.unita = unitaSel;
   }
+
+  ricarica(o: Organigramma){
+    this.org.create(o);
+    this.unitaRadice = new UnitaPadre(true);
+    this.unitaRadice.create(this.org.unita);
+  }
+
 
 }
