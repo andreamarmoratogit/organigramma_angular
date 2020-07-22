@@ -7,37 +7,35 @@ export class UnitaPadre {
   listDip: Dipendente[];
   ruoli: Ruolo[];
   figli: UnitaPadre[] ;
-  temp: UnitaPadre;
 
-  constructor(b: boolean){
+  constructor(){
     this.id = -1;
     this.nome = 'null';
     this.listDip = new Array<Dipendente>();
     this.ruoli = new Array<Ruolo>();
     this.figli = new Array<UnitaPadre>();
-    if (b){this.temp = null; }
-    else{this.temp = new UnitaPadre(true); }
   }
 
-  create(u: UnitaPadre){
-    this.id = u.id;
-    this.nome = u.nome;
-    this.ruoli = new Array<Ruolo>(u.ruoli.length);
+  static create(u: UnitaPadre): UnitaPadre{
+    const unita = new UnitaPadre();
+    unita.id = u.id;
+    unita.nome = u.nome;
+
+    unita.ruoli = new Array<Ruolo>(u.ruoli.length);
     for (let i = 0; i < u.ruoli.length; i++){
-      this.ruoli[i] = new Ruolo(u.ruoli[i]);
+      unita.ruoli[i] = Ruolo.create(u.ruoli[i]);
     }
 
-    this.listDip = new Array<Dipendente>(this.listDip.length);
+    unita.listDip = new Array<Dipendente>(u.listDip.length);
     for (let i = 0; i < u.listDip.length; i++){
-      this.listDip[i] = new Dipendente();
-      this.listDip[i].create(u.listDip[i]);
+      unita.listDip[i] = Dipendente.create(u.listDip[i]);
     }
 
-    this.figli = new Array<UnitaPadre>(u.figli.length);
+    unita.figli = new Array<UnitaPadre>(u.figli.length);
     for (let i = 0; i < u.figli.length; i++){
-      this.figli[i] = new UnitaPadre(true);
-      this.figli[i].create(u.figli[i]);
+      unita.figli[i] = UnitaPadre.create(u.figli[i]);
     }
+    return unita;
   }
 
   toString(){

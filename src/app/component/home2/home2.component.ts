@@ -21,7 +21,7 @@ export class Home2Component implements OnInit {
       firstCtrl: ['', Validators.required]
     });
     this.org = new Organigramma();
-    this.un = new UnitaPadre(false);
+    this.un = new UnitaPadre();
     this.firstFormGroup.valueChanges.subscribe(value => {this.testo = value.firstCtrl; });
   }
 
@@ -36,7 +36,7 @@ export class Home2Component implements OnInit {
   cerca() {
     console.log(this.testo);
     this.homeService.cercaOrganigramma(this.testo).subscribe((res: Organigramma) =>
-      {this.org.create(res),
+      {this.org = Organigramma.create(res),
       this.homeService.setOrg(this.org),
       this.router.navigate(['organigramma']); }
     );

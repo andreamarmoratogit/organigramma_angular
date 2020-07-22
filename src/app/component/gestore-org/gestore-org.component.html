@@ -11,7 +11,7 @@
     <h1>Menu</h1>
     <app-menu [unitaSel]="unita"
       (aggU)="aggiungiUnita($event)" (aggD)="aggiungiDip($event)" (aggR)="aggiungiRuolo($event)" (rimU)="rimuoviUnita()"
-      (rimD)="rimuoviDip()" (rimR)="rimuoviRuolo()">
+      (rimD)="rimuoviDip($event)" (rimR)="rimuoviRuolo($event)">
     </app-menu>
   </mat-sidenav>
 

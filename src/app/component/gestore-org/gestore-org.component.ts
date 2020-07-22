@@ -66,9 +66,8 @@ export class GestoreOrgComponent implements OnInit {
   }
 
   ricarica(o: Organigramma){
-    this.org.create(o);
-    this.unitaRadice = new UnitaPadre(true);
-    this.unitaRadice.create(this.org.unita);
+    this.org = Organigramma.create(o);
+    this.unitaRadice = this.org.unita;
   }
 
 

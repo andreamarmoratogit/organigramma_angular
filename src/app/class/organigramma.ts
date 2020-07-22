@@ -9,13 +9,15 @@ export class Organigramma {
   constructor(){
     this.id = -1;
     this.nome = '';
-    this.unita = new UnitaPadre(false);
+    this.unita = new UnitaPadre();
   }
 
-  create(o: Organigramma){
-    this.id = o.id;
-    this.nome = o.nome;
-    this.unita.create((o.unita ));
+  static create(o: Organigramma): Organigramma{
+    const org = new Organigramma();
+    org.id = o.id;
+    org.nome = o.nome;
+    org.unita = UnitaPadre.create(o.unita );
+    return org;
   }
   toString(): string{
     return `organigramma:${this.id} ${this.nome}`;

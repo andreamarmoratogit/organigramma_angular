@@ -1,7 +1,13 @@
 export class Ruolo {
   nome: string;
-  constructor(ruolo: Ruolo){
-    this.nome = ruolo.nome;
+
+  constructor(){
+    this.nome = '';
+  }
+  static create(r: Ruolo): Ruolo{
+    const ruolo = new Ruolo();
+    ruolo.nome = r.nome;
+    return ruolo;
   }
 
   toString(): string{
