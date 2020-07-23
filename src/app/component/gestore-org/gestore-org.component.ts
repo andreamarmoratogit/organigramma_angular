@@ -56,11 +56,6 @@ export class GestoreOrgComponent implements OnInit {
     { this.ricarica(ret); });
   }
 
- /* reload(){
-    this.router.routeReuseStrategy.shouldReuseRoute = function f() {return false; };
-    this.router.navigate(['organigramma']);
-  }*/
-
   selected(unitaSel: UnitaPadre){
     this.unita = unitaSel;
   }

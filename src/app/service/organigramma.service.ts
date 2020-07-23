@@ -18,7 +18,7 @@ export class OrganigrammaService {
     return this.http.post<Organigramma>(this.url + 'unita/' + orgId, [idUnita, tipo, nome] );
   }
   rimUnita(idOrg: number, idUnita: number): Observable<any>{
-    return this.http.put(this.url + 'unitaDel/' + idOrg, idUnita );
+    return this.http.delete(this.url + 'unitaDel/' + idOrg + '/' + idUnita);
   }
   aggDip(orgId: number, unitaId: number, nome: string, cognome: string, ruolo: string): Observable<any>{
     return this.http.post(this.url + 'dipendente/' + orgId, [unitaId, nome, cognome, ruolo] );
@@ -30,7 +30,7 @@ export class OrganigrammaService {
     return this.http.post(this.url + 'ruolo/' + orgId, [unitaId, nome] );
   }
   rimRuolo(idOrg: number, idU: number, nome: string): Observable<any>{
-    return this.http.put(this.url + 'ruolo/' + idOrg, [idU, nome]);
+    return this.http.delete(this.url + 'ruolo/' + idOrg + '/' + idU + '/' + nome);
   }
 
   setUnita(unita: UnitaPadre){

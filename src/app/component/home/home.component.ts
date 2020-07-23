@@ -41,7 +41,6 @@ export class HomeComponent implements OnInit {
     return true;
   }
   crea() {
-    console.log(`${this.nomeO}  ${this.nomeR}`);
     this.homeService.creaOrganigramma(this.nomeO, this.nomeR).subscribe((res: Organigramma) =>
     { this.org = Organigramma.create(res),
       this.homeService.setOrg(this.org),

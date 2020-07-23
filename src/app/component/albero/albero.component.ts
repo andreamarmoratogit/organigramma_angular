@@ -20,16 +20,9 @@ export class AlberoComponent implements OnInit {
   @Output() selected = new EventEmitter<UnitaPadre>();
   @Input() unitaRadice: UnitaPadre;
   @Input() cont = 0;
- /* @Input()
-  set unitaR(unitaR: UnitaPadre){
-    this.unitaRadice = unitaR;
-  }
-*/
+
 
   constructor(private homeService: HomeService, private orgService: OrganigrammaService, private router: Router) {
-    /*this.homeService.orgObs.subscribe(o => this.unitaRadice = o.unita);
-    this.dataSource.data = [this.unitaRadice];
-    console.log(this.unitaRadice.toString());*/
   }
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnChanges(changes: SimpleChanges): void{

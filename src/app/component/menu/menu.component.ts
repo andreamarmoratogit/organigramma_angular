@@ -33,7 +33,6 @@ export class MenuComponent implements OnInit {
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnChanges(change: SimpleChanges): void{
-    console.log('ok');
   }
   ngOnInit(): void {
   }

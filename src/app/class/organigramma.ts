@@ -1,4 +1,3 @@
-import { Unita } from './unita';
 import { UnitaPadre } from './unita-padre';
 
 export class Organigramma {

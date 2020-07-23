@@ -4,7 +4,6 @@ import { HomeService } from 'src/app/service/home.service';
 import { Organigramma } from 'src/app/class/organigramma';
 import { Router } from '@angular/router';
 import { UnitaPadre } from 'src/app/class/unita-padre';
-import { OrganigrammaService } from 'src/app/service/organigramma.service';
 
 @Component({
   selector: 'app-home2',
@@ -34,11 +33,10 @@ export class Home2Component implements OnInit {
     return true;
   }
   cerca() {
-    console.log(this.testo);
     this.homeService.cercaOrganigramma(this.testo).subscribe((res: Organigramma) =>
-      {this.org = Organigramma.create(res),
-      this.homeService.setOrg(this.org),
-      this.router.navigate(['organigramma']); }
+      { this.org = Organigramma.create(res),
+        this.homeService.setOrg(this.org),
+        this.router.navigate(['organigramma']); }
     );
   }
 

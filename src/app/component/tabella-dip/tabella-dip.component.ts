@@ -14,6 +14,8 @@ export class TabellaDipComponent implements OnInit {
   listRuoli: string[] = [];
   @Input()
   titolo = 'null';
+  @Input()
+  tipo = '';
   colonne: string[] = ['id', 'nome', 'congome', 'ruolo'];
   constructor() { }
 

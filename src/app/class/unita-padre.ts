@@ -7,6 +7,7 @@ export class UnitaPadre {
   listDip: Dipendente[];
   ruoli: Ruolo[];
   figli: UnitaPadre[] ;
+  tipo: string;
 
   constructor(){
     this.id = -1;
@@ -14,12 +15,14 @@ export class UnitaPadre {
     this.listDip = new Array<Dipendente>();
     this.ruoli = new Array<Ruolo>();
     this.figli = new Array<UnitaPadre>();
+    this.tipo = '';
   }
 
   static create(u: UnitaPadre): UnitaPadre{
     const unita = new UnitaPadre();
     unita.id = u.id;
     unita.nome = u.nome;
+    unita.tipo = u.tipo;
 
     unita.ruoli = new Array<Ruolo>(u.ruoli.length);
     for (let i = 0; i < u.ruoli.length; i++){
@@ -38,16 +41,7 @@ export class UnitaPadre {
     return unita;
   }
 
-  toString(){
-    console.log( `unita: ${this.id} ${this.nome} `);
-    for (const i of this.listDip){
-      console.log(i.toString());
-    }
-    for (const i of this.ruoli){
-      console.log(i.toString());
-    }
-    for (const i of this.figli){
-      console.log(i.toString());
-    }
+  toString(): string{
+    return `unita: ${this.id} ${this.nome} ${this.tipo} `;
   }
 }
