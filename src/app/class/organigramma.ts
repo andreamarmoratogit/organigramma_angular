@@ -10,7 +10,7 @@ export class Organigramma {
     this.nome = '';
     this.unita = new UnitaPadre();
   }
-
+// factory method
   static create(o: Organigramma): Organigramma{
     const org = new Organigramma();
     org.id = o.id;

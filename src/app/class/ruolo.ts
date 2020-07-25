@@ -4,6 +4,7 @@ export class Ruolo {
   constructor(){
     this.nome = '';
   }
+  // Factory method
   static create(r: Ruolo): Ruolo{
     const ruolo = new Ruolo();
     ruolo.nome = r.nome;

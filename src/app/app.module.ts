@@ -26,6 +26,7 @@ import { TabellaDipComponent } from './component/tabella-dip/tabella-dip.compone
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { MatChipsModule } from '@angular/material/chips';
     MatSelectModule,
     MatExpansionModule,
     MatTableModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSnackBarModule
   ],
   providers: [HomeService, OrganigrammaService],
   bootstrap: [AppComponent]

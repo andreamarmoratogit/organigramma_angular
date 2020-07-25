@@ -12,6 +12,7 @@ export class Dipendente {
     this.cognome = '';
     this.ruolo = new Ruolo();
   }
+  // Factory method
   static create(d: Dipendente): Dipendente{
     const dip = new Dipendente();
     dip.id = d.id;

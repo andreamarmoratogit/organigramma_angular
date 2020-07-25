@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Dipendente } from 'src/app/class/dipendente';
 
-
+// componente che si occupa di visualizzare le tabelle contenenti i dipendenti di ogni unita
 @Component({
   selector: 'app-tabella-dip',
   templateUrl: './tabella-dip.component.html',

@@ -6,6 +6,7 @@ import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { OrganigrammaService } from 'src/app/service/organigramma.service';
 import { Router } from '@angular/router';
 
+// componente che si occupa di visualizzare le unita dell'organigramma
 @Component({
   selector: 'app-albero',
   templateUrl: './albero.component.html',
@@ -19,7 +20,6 @@ export class AlberoComponent implements OnInit {
   @Output() menu = new EventEmitter();
   @Output() selected = new EventEmitter<UnitaPadre>();
   @Input() unitaRadice: UnitaPadre;
-  @Input() cont = 0;
 
 
   constructor(private homeService: HomeService, private orgService: OrganigrammaService, private router: Router) {
@@ -33,7 +33,7 @@ export class AlberoComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  // invoca l'evento di selezione di una nuova unita
   nodoSelezionato(u: UnitaPadre){
     this.selected.emit(u);
     if ( this.primaSelezione ) {

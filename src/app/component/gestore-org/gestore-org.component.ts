@@ -4,6 +4,10 @@ import { UnitaPadre } from 'src/app/class/unita-padre';
 import { Organigramma } from 'src/app/class/organigramma';
 import { Router } from '@angular/router';
 import { OrganigrammaService } from 'src/app/service/organigramma.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
+// componente che contiene tutti i componenti della pagina /organigramma
+// e si occupa di effettuare tutte le richieste al server
 @Component({
   selector: 'app-gestore-org',
   templateUrl: './gestore-org.component.html',
@@ -13,8 +17,8 @@ export class GestoreOrgComponent implements OnInit {
   org: Organigramma;
   unitaRadice: UnitaPadre;
   unita: UnitaPadre;
-  cont = 0;
-  constructor(private homeService: HomeService, private orgService: OrganigrammaService, private router: Router) {
+  constructor(private homeService: HomeService, private orgService: OrganigrammaService, private router: Router,
+              private snackBar: MatSnackBar) {
     this.homeService.orgObs.subscribe(o => this.org = o);
     this.unitaRadice = this.org.unita;
   }
@@ -47,22 +51,38 @@ export class GestoreOrgComponent implements OnInit {
   }
 
   rimuoviDip(id: string){
-    this.orgService.rimDip(this.org.id, this.unita.id , id).subscribe((ret: Organigramma) =>
-    { this.ricarica(ret); });
+    const intId = Number(id);
+    if (isNaN(intId)){ // controlla che l'utente non abbia inserito una stringa
+      this.errore('inserire un numero');
+      return;
+    }
+    this.orgService.rimDip(this.org.id, this.unita.id , intId).subscribe(
+      (ret: Organigramma) => { this.ricarica(ret); },
+      err => this.errore(err.error)
+    );
   }
 
   rimuoviRuolo(nome: string){
-    this.orgService.rimRuolo(this.org.id, this.unita.id, nome).subscribe((ret: Organigramma) =>
-    { this.ricarica(ret); });
+    this.orgService.rimRuolo(this.org.id, this.unita.id, nome).subscribe(
+      (ret: Organigramma) => { this.ricarica(ret); },
+      err => this.errore(err.error)
+    );
   }
 
+  // metodo che viene chiamato quanto l'utente cambia unita selezionata
   selected(unitaSel: UnitaPadre){
     this.unita = unitaSel;
   }
 
+  // aggiorna l'organigramma e l'unita radice per aggiornare il componente Albero
   ricarica(o: Organigramma){
     this.org = Organigramma.create(o);
     this.unitaRadice = this.org.unita;
+  }
+
+  // apre un messaggio di errore
+  errore(err: string){
+    this.snackBar.open(err, 'chiudi', { duration: 3000, } );
   }
 
 

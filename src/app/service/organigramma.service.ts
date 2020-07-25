@@ -18,12 +18,12 @@ export class OrganigrammaService {
     return this.http.post<Organigramma>(this.url + 'unita/' + orgId, [idUnita, tipo, nome] );
   }
   rimUnita(idOrg: number, idUnita: number): Observable<any>{
-    return this.http.delete(this.url + 'unitaDel/' + idOrg + '/' + idUnita);
+    return this.http.delete(this.url + 'unita/' + idOrg + '/' + idUnita);
   }
   aggDip(orgId: number, unitaId: number, nome: string, cognome: string, ruolo: string): Observable<any>{
     return this.http.post(this.url + 'dipendente/' + orgId, [unitaId, nome, cognome, ruolo] );
   }
-  rimDip(idOrg: number, idU: number, idD: string): Observable<any>{
+  rimDip(idOrg: number, idU: number, idD: number): Observable<any>{
     return this.http.delete(this.url + 'dipendente/' + idOrg  + '/' + idU + '/' + idD );
   }
   aggRuolo(orgId: number , unitaId: number, nome: string): Observable<any>{

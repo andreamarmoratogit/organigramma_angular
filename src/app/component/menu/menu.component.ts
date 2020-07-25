@@ -4,7 +4,7 @@ import { OrganigrammaService } from 'src/app/service/organigramma.service';
 import { Router } from '@angular/router';
 import { HomeService } from 'src/app/service/home.service';
 
-
+// componente che si occupa del menu laterale e tiene traccia dei dati inseriti dall'utente
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',

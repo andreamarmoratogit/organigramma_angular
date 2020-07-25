@@ -18,6 +18,7 @@ export class UnitaPadre {
     this.tipo = '';
   }
 
+  // Factory method
   static create(u: UnitaPadre): UnitaPadre{
     const unita = new UnitaPadre();
     unita.id = u.id;

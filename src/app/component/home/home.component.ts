@@ -4,6 +4,8 @@ import { HomeService } from 'src/app/service/home.service';
 import { Organigramma } from 'src/app/class/organigramma';
 import { Router } from '@angular/router';
 
+
+// componente che implementa la funzione crea organigramma e contiene Home2Component
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
