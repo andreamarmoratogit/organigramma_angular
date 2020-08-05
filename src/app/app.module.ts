@@ -27,6 +27,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { GestoreDipComponent } from './component/gestore-dip/gestore-dip.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { ErrorPageComponent } from './component/error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +41,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AlberoComponent,
     MenuComponent,
     TabellaDipComponent,
+    GestoreDipComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +64,9 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatExpansionModule,
     MatTableModule,
     MatChipsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDividerModule,
+    MatListModule
   ],
   providers: [HomeService, OrganigrammaService],
   bootstrap: [AppComponent]

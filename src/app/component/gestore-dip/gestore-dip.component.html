@@ -1,0 +1,62 @@
+<mat-toolbar color="primary"  >
+  <button mat-fab routerLink="/" color="basic" >
+    <mat-icon>home</mat-icon>
+  </button>
+  <p class="toolbar">{{dip.nome}}   {{dip.cognome}}</p>
+</mat-toolbar>
+<mat-sidenav-container class="container" autosize>
+  <mat-sidenav  #side class="sidenav" mode="side" opened>
+    <h1>Dipendente</h1>
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input #nomeIn (keyup)="nome=nomeIn.value" matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label>Cognome</mat-label>
+      <input #cognIn (keyup)="cognome=cognIn.value" matInput>
+    </mat-form-field>
+    <br>
+    <button mat-stroked-button (click)="cercaDipendente()"  color="primary">Cerca</button>
+  </mat-sidenav>
+  <h2 style="text-align: center;">LISTA DEI PROGETTI</h2>
+  <div *ngFor="let item of progects">
+    <mat-accordion >
+      <mat-expansion-panel >
+        <mat-expansion-panel-header >
+          <mat-panel-title class="title">{{item.titolo}}</mat-panel-title>
+          <mat-panel-description class="description">{{item.descrizione}}</mat-panel-description>
+        </mat-expansion-panel-header>
+        <mat-list>
+          <div *ngFor="let text of item.timesheet">
+            <mat-list-item>{{text.attivita}}</mat-list-item>
+            <mat-divider></mat-divider>
+          </div>
+        </mat-list>
+        <br>
+        <mat-form-field class="form">
+          <mat-label >inserisci nuova attivita</mat-label>
+          <input #att (keyup)="attivita=att.value" matInput>
+        </mat-form-field>
+        <button mat-stroked-button (click)="addTimesheet(item)" color="primary">Aggiungi</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-divider style="padding: 10px;"></mat-divider>
+  </div>
+  <mat-divider style="min-height: 40px;"></mat-divider>
+
+  <button mat-raised-button (click)="aggiungiProg=!aggiungiProg" class="button" color="primary"> Aggiungi progetto</button>
+  <div *ngIf="aggiungiProg" style="padding:10px;">
+    <mat-form-field style="min-width: 400px;">
+      <mat-label>Titolo progetto</mat-label>
+      <input #titoloIn (keyup)="titolo=titoloIn.value" matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field >
+      <mat-label>Descrizione</mat-label>
+      <textarea class="form2" #descIn (keyup)="desc=descIn.value" matInput></textarea>
+    </mat-form-field>
+    <br>
+    <button mat-stroked-button class="description" (click)="addProject()" color="primary">Aggiungi</button>
+  </div>
+</mat-sidenav-container>

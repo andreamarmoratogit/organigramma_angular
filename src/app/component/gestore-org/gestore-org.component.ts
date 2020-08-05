@@ -20,14 +20,10 @@ export class GestoreOrgComponent implements OnInit {
   constructor(private homeService: HomeService, private orgService: OrganigrammaService, private router: Router,
               private snackBar: MatSnackBar) {
     this.homeService.orgObs.subscribe(o => this.org = o);
-    this.unitaRadice = this.org.unita;
+    this.unitaRadice = this.org.unitaRadice;
   }
 
   ngOnInit(): void {}
-
-  home(){
-    this.router.navigate(['']);
-  }
 
   aggiungiUnita(s: string[]){
     console.log(this.unita.id + ' ' + s[0] + ' ' + s[1]);
@@ -46,8 +42,11 @@ export class GestoreOrgComponent implements OnInit {
   }
 
   rimuoviUnita(){
-    this.orgService.rimUnita(this.org.id, this.unita.id).subscribe((ret: Organigramma) =>
-    { this.ricarica(ret); });
+    if (this.unita.id === this.org.id){this.eliminaOrg(); }
+    else{
+      this.orgService.rimUnita(this.org.id, this.unita.id).subscribe((ret: Organigramma) =>
+      { this.ricarica(ret); });
+    }
   }
 
   rimuoviDip(id: string){
@@ -69,6 +68,11 @@ export class GestoreOrgComponent implements OnInit {
     );
   }
 
+  eliminaOrg(){
+    this.homeService.eliminaOrg(this.org.id).subscribe(
+      res => this.router.navigate(['']) );
+  }
+
   // metodo che viene chiamato quanto l'utente cambia unita selezionata
   selected(unitaSel: UnitaPadre){
     this.unita = unitaSel;
@@ -77,7 +81,7 @@ export class GestoreOrgComponent implements OnInit {
   // aggiorna l'organigramma e l'unita radice per aggiornare il componente Albero
   ricarica(o: Organigramma){
     this.org = Organigramma.create(o);
-    this.unitaRadice = this.org.unita;
+    this.unitaRadice = this.org.unitaRadice;
   }
 
   // apre un messaggio di errore

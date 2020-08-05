@@ -17,6 +17,7 @@ export class MenuComponent implements OnInit {
   @Output()rimR = new EventEmitter<string>();
   @Output()aggD = new EventEmitter<string[]>();
   @Output()rimD = new EventEmitter<string>();
+  @Output()elO = new EventEmitter();
   @Input()unitaSel: UnitaPadre;
   aggUnita = false;
   rimUnita = false;
@@ -24,6 +25,7 @@ export class MenuComponent implements OnInit {
   rimDip = false;
   aggRuolo = false;
   rimRuolo = false;
+  elOrg = false;
   nome: string;
   cognome: string;
   tipo: string;
@@ -54,6 +56,9 @@ export class MenuComponent implements OnInit {
   }
   sendRimD(){
     this.rimD.emit(this.nome);
+  }
+  eliminaOrg(){
+    this.elO.emit();
   }
 
 

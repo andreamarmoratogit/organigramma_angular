@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Organigramma } from '../class/organigramma';
-import { tap } from 'rxjs/operators';
-import { UnitaPadre } from '../class/unita-padre';
 
 @Injectable()
 export class HomeService {
@@ -25,10 +23,10 @@ export class HomeService {
   setOrg(organigramma: Organigramma){
     this.org.next(organigramma);
   }
-/*
-  getOrg(): Organigramma {
-    return this.org;
-  }*/
+  eliminaOrg(idOrg: number): Observable<any>{
+    return this.http.delete(this.url + idOrg);
+  }
+
 
 
 }

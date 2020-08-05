@@ -36,12 +36,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
 
   }
-  verifica(){
-    if ( this.nomeO.length <= 0 || this.nomeR.length <= 0){
-      return false;
-    }
-    return true;
-  }
+
   crea() {
     this.homeService.creaOrganigramma(this.nomeO, this.nomeR).subscribe((res: Organigramma) =>
     { this.org = Organigramma.create(res),
@@ -49,4 +44,5 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['organigramma']); }
     );
   }
+
 }

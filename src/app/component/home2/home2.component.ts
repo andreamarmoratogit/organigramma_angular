@@ -28,12 +28,7 @@ export class Home2Component implements OnInit {
 
   ngOnInit() {
   }
-  verifica(){
-    if ( this.testo.length <= 0){
-      return false;
-    }
-    return true;
-  }
+
   cerca() {
     this.homeService.cercaOrganigramma(this.testo).subscribe(
       (res: Organigramma) => { this.org = Organigramma.create(res), // chiama il metodo factory

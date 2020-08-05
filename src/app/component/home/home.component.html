@@ -1,6 +1,9 @@
 <mat-toolbar color="primary"  >
   <p style="font-size: 30px;">Organigramma Aziendale</p>
 </mat-toolbar>
+<br>
+<button mat-raised-button color="primary" routerLink="/dipendente">Gestore Dipendenti</button>
+
 <hr size="5px">
 <h2 class="subtitle">Nuovo Organigramma</h2>
 
@@ -13,11 +16,11 @@
         <input matInput placeholder="inserire nome" formControlName="firstCtrl" required>
       </mat-form-field>
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button [disabled]="!firstFormGroup.valid" matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup" errorMessage="name required">
+  <mat-step [stepControl]="secondFormGroup" errorMessage="name required" >
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Nome radice</ng-template>
       <mat-form-field>
@@ -26,7 +29,7 @@
       </mat-form-field>
       <div>
         <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-button [disabled]="!secondFormGroup.valid" matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
@@ -34,7 +37,7 @@
     <form>
       <ng-template matStepLabel>Fine</ng-template>
       <button  mat-button matStepperPrevious>Back</button>
-      <button *ngIf="verifica()" (click)="crea()" mat-button matStepperNext>Crea</button>
+      <button [disabled]="!secondFormGroup.valid||!firstFormGroup.valid" (click)="crea()" mat-button matStepperNext>Crea</button>
 
     </form>
   </mat-step>

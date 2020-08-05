@@ -80,3 +80,9 @@
   <br>
   <button mat-stroked-button color="primary" (click)="sendRimR()">Conferma</button>
 </div>
+
+<br><br>
+<button mat-raised-button (click)="elOrg = !elOrg" color="primary">Elimina Organigramma</button>
+<div *ngIf="elOrg">
+  <button mat-stroked-button color="primary" (click)="eliminaOrg()">Conferma</button>
+</div>
