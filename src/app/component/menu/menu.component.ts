@@ -35,6 +35,10 @@ export class MenuComponent implements OnInit {
 
   // tslint:disable-next-line: use-lifecycle-interface
   ngOnChanges(change: SimpleChanges): void{
+    this.nome = '';
+    this.cognome = '';
+    this.tipo = '';
+    this.ruolo = '';
   }
   ngOnInit(): void {
   }

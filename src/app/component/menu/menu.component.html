@@ -2,7 +2,7 @@
 <div *ngIf="aggUnita">
   <mat-form-field appeareance="fill">
     <mat-label>Tipo</mat-label>
-    <mat-select [(value)]="tipo">
+    <mat-select [(ngModel)]="tipo">
       <mat-option value="unita">Unita</mat-option>
       <mat-option value="sottounita">Sottounita</mat-option>
       <mat-option value="organi">Organi Di Gestione</mat-option>
@@ -11,7 +11,7 @@
   <br>
   <mat-form-field appeareance="fill">
     <mat-label>Nome</mat-label>
-    <input #aggUnIn (keyup)="nome=aggUnIn.value" matInput>
+    <input #aggUnIn [(ngModel)]="nome" matInput>
   </mat-form-field>
   <br>
   <button mat-stroked-button (click)="sendAggU()" color="primary">Aggiungi</button>
@@ -28,17 +28,17 @@
 <div *ngIf="aggDip">
   <mat-form-field appeareance="fill">
     <mat-label>Nome</mat-label>
-    <input #aggDipN (keyup)="nome=aggDipN.value" matInput>
+    <input #aggDipN [(ngModel)]="nome" matInput>
   </mat-form-field>
   <br>
   <mat-form-field appeareance="fill">
     <mat-label>Cognome</mat-label>
-    <input #aggDipC (keyup)="cognome=aggDipC.value" matInput>
+    <input #aggDipC [(ngModel)]="cognome" matInput>
   </mat-form-field>
   <br>
   <mat-form-field appeareance="fill">
     <mat-label>ruolo</mat-label>
-    <mat-select [(value)]="ruolo">
+    <mat-select [(ngModel)]="ruolo">
 
       <mat-option *ngFor="let element of unitaSel.ruoli" value={{element}}>{{element}}</mat-option>
 
@@ -53,7 +53,7 @@
 <div *ngIf="rimDip">
   <mat-form-field appeareance="fill">
     <mat-label>Id</mat-label>
-    <input #rimDipIn (keyup)="nome=rimDipIn.value" matInput>
+    <input #rimDipIn [(ngModel)]="nome" matInput>
   </mat-form-field>
   <br>
   <button mat-stroked-button color="primary" (click)="sendRimD()">Conferma</button>
@@ -64,7 +64,7 @@
 <div *ngIf="aggRuolo">
   <mat-form-field appeareance="fill">
     <mat-label>Nome</mat-label>
-    <input #aggRuIn (keyup)="nome=aggRuIn.value" matInput>
+    <input #aggRuIn [(ngModel)]="nome" matInput>
   </mat-form-field>
   <br>
   <button mat-stroked-button (click)="sendAggR()" color="primary">Aggiungi</button>
@@ -75,7 +75,7 @@
 <div *ngIf="rimRuolo">
   <mat-form-field appeareance="fill">
     <mat-label>Nome</mat-label>
-    <input #rimRuIn (keyup)="nome=rimRuIn.value" matInput>
+    <input #rimRuIn [(ngModel)]="nome" matInput>
   </mat-form-field>
   <br>
   <button mat-stroked-button color="primary" (click)="sendRimR()">Conferma</button>
